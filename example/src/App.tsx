@@ -1,10 +1,11 @@
 import React from 'react'
 
-import { ExampleComponent } from 'poc-core-system'
-import 'poc-core-system/dist/index.css'
+import { CoreAppShell, MenuItem, MenuRepositoryImpl} from 'poc-core-system'
 
 const App = () => {
-  return <ExampleComponent text="Create React Library Example 😄" />
+  const repository = MenuRepositoryImpl.getInstance();
+  repository.register(new MenuItem('menu1', 'Item test', () => null));
+  return <CoreAppShell />
 }
 
 export default App
