@@ -9,7 +9,7 @@ const CoreAppShellComponent = () => {
   return (
     <nav>
       <ul>
-        {menuItems.map((item: MenuItem) => <li key={item.id}>{item.label}</li>)}
+        {menuItems.map((item: MenuItem) => <li key={item.id} onClick={item.action}>{item.label}</li>)}
       </ul>
     </nav>
   );
