@@ -13,7 +13,7 @@ export const CoreAppShell = () => {
         </ul>
       </nav>
       <main>
-        <section>{<activeSection.component />}</section>
+        <section>{activeSection ? <activeSection.component /> : null}</section>
       </main>
     </div>
   );
