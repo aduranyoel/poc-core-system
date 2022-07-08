@@ -2,7 +2,7 @@ import { ContentRepository, Content } from '../domain';
 
 export class ContentRepositoryImpl implements ContentRepository {
   private static instance: ContentRepositoryImpl;
-  public active: Content;
+  public active: Content | null = null;
   public sections: Content[] = [];
 
   private constructor() {}

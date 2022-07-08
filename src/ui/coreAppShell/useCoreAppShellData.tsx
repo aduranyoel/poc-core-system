@@ -9,8 +9,10 @@ export const useCoreAppShellData = () => {
   const [menuItems, setMenuItems] = useState(menuRepository.items);
   const [activeSection, setActiveSection] = useState(contentRepository.active);
 
-  useEffect(() => { setMenuItems(menuRepository.items); }, [menuRepository.items]);
-  useEffect(() => { setActiveSection(contentRepository.active); }, [contentRepository.active]);
+  useEffect(() => {
+    setMenuItems(menuRepository.items); }, [menuRepository.items]);
+  useEffect(() => {
+    setActiveSection(contentRepository.active); }, [contentRepository.active]);
 
   return { menuItems, activeSection };
 };
