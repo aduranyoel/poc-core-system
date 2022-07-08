@@ -1,10 +1,9 @@
-import { observer } from 'mobx-react';
 import React from 'react';
 import { MenuItem } from '../../domain';
-import { MenuRepositoryImpl } from '../../infrastructure';
+import { useCoreAppShellData } from './useCoreAppShellData';
 
-const CoreAppShellComponent = () => {
-  const menuItems = MenuRepositoryImpl.getInstance().getAll();
+export const CoreAppShell = () => {
+  const { menuItems } = useCoreAppShellData();
 
   return (
     <nav>
@@ -15,5 +14,4 @@ const CoreAppShellComponent = () => {
   );
 };
 
-export const CoreAppShell = observer(CoreAppShellComponent);
 
