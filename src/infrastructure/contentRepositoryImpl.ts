@@ -16,7 +16,7 @@ export class ContentRepositoryImpl implements ContentRepository {
   }
 
   activate(section: Content): void {
-    this.active = section;
+    this.active = new Content(section.id, section.component);
   }
 
   register(section: Content): void {
