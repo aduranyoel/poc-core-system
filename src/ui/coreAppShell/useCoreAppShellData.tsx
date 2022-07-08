@@ -1,13 +1,13 @@
-import { useState, useEffect } from 'react';
-import { MenuRepositoryImpl } from '../../infrastructure';
+import { useMemo } from 'react';
+import { ContentRepository, MenuRepository } from '../../domain';
+import { ContentRepositoryImpl, MenuRepositoryImpl } from '../../infrastructure';
 
 export const useCoreAppShellData = () => {
-  const menuRepository = MenuRepositoryImpl.getInstance();
-  const [menuItems, setMenuItems] = useState(menuRepository.items);
+  const menuRepository: MenuRepository = MenuRepositoryImpl.getInstance();
+  const contentRepository: ContentRepository = ContentRepositoryImpl.getInstance();
 
-  useEffect(() => {
-    setMenuItems(menuRepository.items);
-  }, [menuRepository.items]);
+  const menuItems = useMemo(() => menuRepository.items, [menuRepository.items]);
+  const activeSection = useMemo(() => contentRepository.active, [contentRepository.active]);
 
-  return { menuItems };
+  return { menuItems, activeSection };
 };

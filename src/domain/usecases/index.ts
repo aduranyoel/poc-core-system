@@ -1,2 +1,3 @@
 export * from './menu/registerMenu';
-export * from './menu/getAllMenuItems';
+export * from './content/activateContent';
+export * from './content/registerContent';
