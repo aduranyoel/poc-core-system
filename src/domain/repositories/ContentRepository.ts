@@ -1,8 +1,5 @@
-import { Content } from '../entities';
+import { Content, State } from '../entities';
 
-export interface ContentRepository {
-  sections: Content[];
-  active: Content | null;
+export interface ContentRepository extends State<Content | null>{
   activate(section: Content): void;
-  register(section: Content): void;
 }

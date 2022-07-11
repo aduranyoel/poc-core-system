@@ -1,6 +1,5 @@
-import { MenuItem } from '../entities';
+import { MenuItem, State } from '../entities';
 
-export interface MenuRepository {
+export interface MenuRepository extends State<MenuItem[]>{
   register(menuItem: MenuItem): void;
-  items: MenuItem[];
 }

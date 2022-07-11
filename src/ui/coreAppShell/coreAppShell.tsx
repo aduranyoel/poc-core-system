@@ -1,9 +1,12 @@
 import React from 'react';
 import { MenuItem } from '../../domain';
-import { useCoreAppShellData } from './useCoreAppShellData';
+import { ContentRepositoryImpl, MenuRepositoryImpl } from '../../infrastructure';
+import { useBloCState } from '../hooks';
 
 export const CoreAppShell = () => {
-  const { menuItems, activeSection } = useCoreAppShellData();
+
+  const menuItems = useBloCState(MenuRepositoryImpl.getInstance());
+  const activeSection = useBloCState(ContentRepositoryImpl.getInstance());
 
   return (
     <div className="container">
@@ -18,5 +21,3 @@ export const CoreAppShell = () => {
     </div>
   );
 };
-
-

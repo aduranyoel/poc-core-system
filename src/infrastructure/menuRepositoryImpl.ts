@@ -1,10 +1,12 @@
-import { MenuRepository, MenuItem } from '../domain';
+import { MenuRepository, MenuItem, BloC } from '../domain';
 
-export class MenuRepositoryImpl implements MenuRepository {
+export class MenuRepositoryImpl extends BloC<MenuItem[]> implements MenuRepository {
   private static instance: MenuRepositoryImpl;
-  public items: MenuItem[] = [];
+  public state: MenuItem[] = [];
 
-  private constructor() {}
+  private constructor() {
+    super();
+  }
 
   public static getInstance(): MenuRepositoryImpl {
     if (!MenuRepositoryImpl.instance) {
@@ -15,7 +17,7 @@ export class MenuRepositoryImpl implements MenuRepository {
   }
 
   register(menuItem: MenuItem): void {
-    if (this.items.some(m => m.id === menuItem.id)) return;
-    this.items = [...this.items, menuItem];
+    if (this.state.some(m => m.id === menuItem.id)) return;
+    this.setState([...this.state, menuItem]);
   }
 }
