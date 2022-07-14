@@ -1,10 +1,10 @@
 import { ContentRepository, Content, BloC } from '../domain';
 
-export class ContentRepositoryImpl extends BloC<Content> implements ContentRepository {
+export class ContentRepositoryImpl extends BloC<Content | null> implements ContentRepository {
   private static instance: ContentRepositoryImpl;
 
   private constructor() {
-    super();
+    super(null);
   }
 
   public static getInstance(): ContentRepositoryImpl {

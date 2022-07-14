@@ -8,7 +8,7 @@ import { NavComponent } from '../nav/navComponent';
 export const CoreAppShell = (): JSX.Element => {
 
   const menuItems = useBloCState<MenuItem[]>(MenuRepositoryImpl.getInstance());
-  const activeSection = useBloCState<Content>(ContentRepositoryImpl.getInstance());
+  const activeSection = useBloCState<Content | null>(ContentRepositoryImpl.getInstance());
 
   return (
     <LayoutComponent>

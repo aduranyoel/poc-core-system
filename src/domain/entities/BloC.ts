@@ -6,6 +6,10 @@ export abstract class BloC<T> implements State<T>{
   public state: T;
   private listeners: Subscription<T>[] = [];
 
+  protected constructor(state: T) {
+    this.state = state;
+  }
+
   public subscribe(listener: Subscription<T>): Subscription<T> {
     this.listeners.push(listener);
     return listener;

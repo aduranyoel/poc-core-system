@@ -2,10 +2,9 @@ import { MenuRepository, MenuItem, BloC } from '../domain';
 
 export class MenuRepositoryImpl extends BloC<MenuItem[]> implements MenuRepository {
   private static instance: MenuRepositoryImpl;
-  public state: MenuItem[] = [];
 
   private constructor() {
-    super();
+    super([]);
   }
 
   public static getInstance(): MenuRepositoryImpl {
