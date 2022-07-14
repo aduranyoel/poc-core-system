@@ -1,23 +1,19 @@
 import React from 'react';
-import { MenuItem } from '../../domain';
+import { Content, MenuItem } from '../../domain';
 import { ContentRepositoryImpl, MenuRepositoryImpl } from '../../infrastructure';
 import { useBloCState } from '../hooks';
+import { LayoutComponent } from '../layout/layoutComponent';
+import { NavComponent } from '../nav/navComponent';
 
-export const CoreAppShell = () => {
+export const CoreAppShell = (): JSX.Element => {
 
-  const menuItems = useBloCState(MenuRepositoryImpl.getInstance());
-  const activeSection = useBloCState(ContentRepositoryImpl.getInstance());
+  const menuItems = useBloCState<MenuItem[]>(MenuRepositoryImpl.getInstance());
+  const activeSection = useBloCState<Content>(ContentRepositoryImpl.getInstance());
 
   return (
-    <div className="container">
-      <nav>
-        <ul>
-          {menuItems.map((item: MenuItem) => <li key={item.id} onClick={item.action}>{item.label}</li>)}
-        </ul>
-      </nav>
-      <main>
-        <section>{activeSection ? <activeSection.component /> : null}</section>
-      </main>
-    </div>
+    <LayoutComponent>
+      <NavComponent menuItems={menuItems}/>
+      <section>{activeSection ? <activeSection.component/> : null}</section>
+    </LayoutComponent>
   );
 };

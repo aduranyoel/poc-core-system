@@ -1,6 +1,6 @@
 {
   "name": "poc-core-system",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "Made with create-react-library",
   "author": "yoet92",
   "license": "MIT",
@@ -12,16 +12,18 @@
     "node": ">=10"
   },
   "scripts": {
-    "build": "microbundle-crl --no-compress --format modern,cjs",
-    "start": "microbundle-crl watch --no-compress --format modern,cjs",
+    "build": "microbundle-crl --no-compress --format modern,cjs && npm run cp:theme",
+    "start": "concurrently \"microbundle-crl watch --no-compress --format modern,cjs\" \"npm run watch:theme\"",
     "prepare": "run-s build",
-    "test": "run-s test:unit test:lint test:build",
+    "test": "run-s test:unit test:build",
     "test:build": "run-s build",
     "test:lint": "eslint .",
     "test:unit": "cross-env CI=1 react-scripts test --env=jsdom",
     "test:watch": "react-scripts test --env=jsdom",
     "predeploy": "cd example && npm install && npm run build",
-    "deploy": "gh-pages -d example/build"
+    "deploy": "gh-pages -d example/build",
+    "cp:theme": "cpx src/ui/styles/* dist/styles -v",
+    "watch:theme": "cpx src/ui/styles/* dist/styles -v -w"
   },
   "peerDependencies": {
     "react": "^16.0.0"
@@ -55,12 +57,17 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "^3.4.1",
+    "sass": "^1.53.0",
     "typescript": "^3.7.5"
   },
   "files": [
     "dist"
   ],
   "dependencies": {
+    "@emotion/react": "^11.9.3",
+    "@emotion/styled": "^11.9.3",
+    "concurrently": "^7.2.2",
+    "cpx": "^1.5.0",
     "mobx": "^6.6.1",
     "mobx-react": "^7.5.2"
   }

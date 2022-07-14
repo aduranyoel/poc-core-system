@@ -1,0 +1,16 @@
+@use "variables" as *;
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: $background;
+  color: $color;
+  font-feature-settings: "liga" 0;
+  line-height: 1.7;
+  font-family: "IBM Plex Mono", monospace;
+  font-weight: 300;
+}

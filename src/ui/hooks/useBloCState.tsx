@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { BloC } from '../../domain';
 
-export function useBloCState<T>(bloc: BloC<T>) {
-  const [state, setState] = useState(bloc.state);
+export function useBloCState<T>(bloc: BloC<T>): T {
+  const [state, setState] = useState<T>(bloc.state);
 
   useEffect(() => {
     const subscription = bloc.subscribe(setState);
