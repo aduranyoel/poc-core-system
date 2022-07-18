@@ -1,8 +1,6 @@
-import { State } from './State';
+import { IBloC, Subscription } from '../domain';
 
-export type Subscription<T> = (state: T) => void;
-
-export abstract class BloC<T> implements State<T>{
+export abstract class BloC<T> implements IBloC<T>{
   public state: T;
   private listeners: Subscription<T>[] = [];
 

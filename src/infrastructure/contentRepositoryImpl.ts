@@ -1,18 +1,10 @@
-import { ContentRepository, Content, BloC } from '../domain';
+import { Content, ContentRepository } from '../domain';
+import { BloC } from './BloC';
 
 export class ContentRepositoryImpl extends BloC<Content | null> implements ContentRepository {
-  private static instance: ContentRepositoryImpl;
 
-  private constructor() {
+  constructor() {
     super(null);
-  }
-
-  public static getInstance(): ContentRepositoryImpl {
-    if (!ContentRepositoryImpl.instance) {
-      ContentRepositoryImpl.instance = new ContentRepositoryImpl();
-    }
-
-    return ContentRepositoryImpl.instance;
   }
 
   activate(section: Content): void {

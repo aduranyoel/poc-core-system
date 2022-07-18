@@ -1,18 +1,10 @@
-import { MenuRepository, MenuItem, BloC } from '../domain';
+import { MenuRepository, MenuItem } from '../domain';
+import { BloC } from './BloC';
 
 export class MenuRepositoryImpl extends BloC<MenuItem[]> implements MenuRepository {
-  private static instance: MenuRepositoryImpl;
 
-  private constructor() {
+  constructor() {
     super([]);
-  }
-
-  public static getInstance(): MenuRepositoryImpl {
-    if (!MenuRepositoryImpl.instance) {
-      MenuRepositoryImpl.instance = new MenuRepositoryImpl();
-    }
-
-    return MenuRepositoryImpl.instance;
   }
 
   register(menuItem: MenuItem): void {

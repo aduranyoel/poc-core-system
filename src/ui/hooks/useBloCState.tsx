@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import { BloC } from '../../domain';
+import { IBloC } from '../../domain';
 
-export function useBloCState<T>(bloc: BloC<T>): T {
+export function useBloCState<T>(bloc: IBloC<T>): T {
   const [state, setState] = useState<T>(bloc.state);
 
   useEffect(() => {
