@@ -1,9 +1,8 @@
+import { LayoutComponent, NavComponent, NavMenuItem } from 'poc-ui-components';
 import React from 'react';
 import { Content, MenuItem } from '../../domain';
 import { ServiceResolver } from '../../infrastructure';
 import { useBloCState } from '../hooks';
-import { LayoutComponent } from '../layout/layoutComponent';
-import { NavComponent } from '../nav/navComponent';
 
 export const CoreAppShell: React.FunctionComponent = (): JSX.Element => {
 
@@ -12,7 +11,9 @@ export const CoreAppShell: React.FunctionComponent = (): JSX.Element => {
 
   return (
     <LayoutComponent>
-      <NavComponent menuItems={menuItems}/>
+      <NavComponent>
+        {menuItems.map((item: MenuItem) => <NavMenuItem key={item.id} action={item.action} label={item.label}/>)}
+      </NavComponent>
       <section>{activeSection ? <activeSection.component/> : null}</section>
     </LayoutComponent>
   );
