@@ -1,7 +1,7 @@
-import { MenuRepository, MenuItem } from '../domain';
-import { BloC } from './BloC';
+import { MenuItem } from '../../entities';
+import { MenuService } from '../abstracts';
 
-export class MenuRepositoryImpl extends BloC<MenuItem[]> implements MenuRepository {
+export class MenuServiceImpl extends MenuService {
 
   constructor() {
     super([]);

@@ -1,7 +1,7 @@
 {
   "name": "poc-core-system",
-  "version": "1.0.13",
-  "description": "Made with create-react-library",
+  "version": "1.0.14",
+  "description": "Provides all common features for POC System",
   "author": "yoet92",
   "license": "MIT",
   "repository": "https://github.com/yoet92/poc-core-system.git",
@@ -62,8 +62,6 @@
     "dist"
   ],
   "dependencies": {
-    "@emotion/react": "^11.9.3",
-    "@emotion/styled": "^11.9.3",
     "poc-ui-components": "^1.0.1"
   }
 }

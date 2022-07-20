@@ -1,13 +1,13 @@
 import { LayoutComponent, NavComponent, NavMenuItem } from 'poc-ui-components';
 import React from 'react';
-import { Content, MenuItem } from '../../domain';
-import { ServiceResolver } from '../../infrastructure';
+import { Content, MenuItem } from '../../entities';
+import { SystemProvider } from '../../infrastructure/systemProvider';
 import { useBloCState } from '../hooks';
 
 export const CoreAppShell: React.FunctionComponent = (): JSX.Element => {
 
-  const menuItems = useBloCState<MenuItem[]>(ServiceResolver.resolve().MenuRepository);
-  const activeSection = useBloCState<Content | null>(ServiceResolver.resolve().ContentRepository);
+  const menuItems = useBloCState<MenuItem[]>(SystemProvider.provide().MenuService);
+  const activeSection = useBloCState<Content | null>(SystemProvider.provide().ContentService);
 
   return (
     <LayoutComponent>

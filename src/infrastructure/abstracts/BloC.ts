@@ -1,6 +1,6 @@
-import { IBloC, Subscription } from '../domain';
+import { Subscription } from '../types';
 
-export abstract class BloC<T> implements IBloC<T>{
+export abstract class BloC<T> {
   public state: T;
   private listeners: Subscription<T>[] = [];
 
@@ -15,9 +15,8 @@ export abstract class BloC<T> implements IBloC<T>{
 
   public unsubscribe(listener: Subscription<T>): void {
     const subIdx = this.listeners.indexOf(listener);
-    if (subIdx !== -1) {
-      this.listeners.splice(subIdx, 1);
-    }
+    if (subIdx === -1) return;
+    this.listeners.splice(subIdx, 1);
   }
 
   public setState(state: T): void {
