@@ -1,5 +1,5 @@
-import { ContentService, MenuService } from './abstracts';
-import { ContentServiceImpl, MenuServiceImpl } from './implementations';
+import { ContentService, MenuService } from '../abstracts';
+import { ContentServiceImpl, MenuServiceImpl } from '../implementations';
 
 export class SystemProvider {
   private static instance: SystemProvider;

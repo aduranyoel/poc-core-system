@@ -1,5 +1,5 @@
 import { ContentService } from '../abstracts';
-import { Content } from "../../entities";
+import { Content } from "../../domain";
 
 export class ContentServiceImpl extends ContentService {
 
@@ -8,6 +8,6 @@ export class ContentServiceImpl extends ContentService {
   }
 
   activate(section: Content): void {
-    this.setState(section);
+    this.next(section);
   }
 }

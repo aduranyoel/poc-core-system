@@ -1,11 +1,11 @@
 import { Subscription } from '../types';
 
-export abstract class BloC<T> {
-  public state: T;
+export abstract class BehaviorSubject<T> {
+  public value: T;
   private listeners: Subscription<T>[] = [];
 
-  protected constructor(state: T) {
-    this.state = state;
+  protected constructor(value: T) {
+    this.value = value;
   }
 
   public subscribe(listener: Subscription<T>): Subscription<T> {
@@ -19,8 +19,8 @@ export abstract class BloC<T> {
     this.listeners.splice(subIdx, 1);
   }
 
-  public setState(state: T): void {
-    this.state = state;
-    this.listeners.forEach((listener: Subscription<T>) => listener(this.state));
+  public next(state: T): void {
+    this.value = state;
+    this.listeners.forEach((listener: Subscription<T>) => listener(this.value));
   }
 }

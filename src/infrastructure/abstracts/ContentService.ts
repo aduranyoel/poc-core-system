@@ -1,6 +1,6 @@
-import { Content } from "../../entities";
-import { BloC } from './BloC';
+import { Content } from "../../domain";
+import { BehaviorSubject } from './BehaviorSubject';
 
-export abstract class ContentService extends BloC<Content | null>{
+export abstract class ContentService extends BehaviorSubject<Content | null>{
   abstract activate(section: Content): void;
 }

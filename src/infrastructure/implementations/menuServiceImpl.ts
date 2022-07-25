@@ -1,4 +1,4 @@
-import { MenuItem } from '../../entities';
+import { MenuItem } from '../../domain';
 import { MenuService } from '../abstracts';
 
 export class MenuServiceImpl extends MenuService {
@@ -8,7 +8,7 @@ export class MenuServiceImpl extends MenuService {
   }
 
   register(menuItem: MenuItem): void {
-    if (this.state.some(m => m.id === menuItem.id)) return;
-    this.setState([...this.state, menuItem]);
+    if (this.value.some(m => m.id === menuItem.id)) return;
+    this.next([...this.value, menuItem]);
   }
 }

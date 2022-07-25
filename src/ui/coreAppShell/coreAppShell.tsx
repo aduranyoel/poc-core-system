@@ -1,7 +1,7 @@
 import { LayoutComponent, NavComponent, NavMenuItem } from 'poc-ui-components';
 import React from 'react';
-import { Content, MenuItem } from '../../entities';
-import { SystemProvider } from '../../infrastructure/systemProvider';
+import { Content, MenuItem } from '../../domain';
+import { SystemProvider } from '../../infrastructure';
 import { useBloCState } from '../hooks';
 
 export const CoreAppShell: React.FunctionComponent = (): JSX.Element => {

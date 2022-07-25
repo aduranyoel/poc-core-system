@@ -1,6 +1,6 @@
-import { MenuItem } from '../../entities';
-import { BloC } from './BloC';
+import { MenuItem } from '../../domain';
+import { BehaviorSubject } from './BehaviorSubject';
 
-export abstract class MenuService extends BloC<MenuItem[]>{
+export abstract class MenuService extends BehaviorSubject<MenuItem[]>{
   abstract register(menuItem: MenuItem): void;
 }

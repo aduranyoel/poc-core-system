@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
-import { BloC } from '../../infrastructure';
+import { BehaviorSubject } from '../../infrastructure';
 
-export function useBloCState<T>(bloc: BloC<T>): T {
-  const [state, setState] = useState<T>(bloc.state);
+export function useBloCState<T>(behaviorSubject: BehaviorSubject<T>): T {
+  const [state, setState] = useState<T>(behaviorSubject.value);
 
   useEffect(() => {
-    const subscription = bloc.subscribe(setState);
-    return () => bloc.unsubscribe(subscription);
-  }, [bloc]);
+    const subscription = behaviorSubject.subscribe(setState);
+    return () => behaviorSubject.unsubscribe(subscription);
+  }, [behaviorSubject]);
 
   return state;
 }
